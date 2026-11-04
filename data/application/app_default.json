@@ -1,0 +1,37 @@
+{
+  "_ghi_chu": "Data Application (hr.applicant). Key = ten o tren form (name). Dropdown ghi chu hien thi. SDT/email tu sinh moi lan chay de khong trung.",
+  "last_name": "Nguyễn Văn",
+  "first_name": "Kiểm",
+  "prefix_name": "Mr.",
+  "date_of_birth": "1998",
+  "source_id": "TA",
+  "main_skill": "Manual testing (Web)",
+  "exp_id": "1 year",
+  "university_new": "Đại Học Bách khoa Hà Nội",
+  "current_company_id": "Đại học FPT",
+  "language_ids": "CEFR B1",
+  "salary_type": "Fix",
+  "expect_salary_fix": "15000000",
+  "expect_ob_days": 30,
+  "business_domain_id": "Khác",
+  "recruitment_type": "Bodyshop",
+  "working_type": "Full Time",
+  "market_id": "Việt Nam",
+  "cv": {
+    "address": "Số 12 Ngõ 34 Trần Thái Tông, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội",
+    "address_key": "Ngõ 34 Trần Thái Tông",
+    "portfolio": "https://kiemtestportfolio.dev",
+    "university": "Đại học Bách Khoa Hà Nội"
+  },
+  "working_history": {
+    "current_company_id": "Đại học FPT",
+    "company_size": "100 - 500 người",
+    "package": "13 Tháng / Năm",
+    "business_domain_id": "Giáo dục",
+    "personal_healthcare": "Yes",
+    "project_scale": "10 - 20 người",
+    "role_project_ta_ids": "Others",
+    "reason_resignation_job_id": "Có lý do cá nhân",
+    "reason_detail": "Tim moi truong phat trien hon"
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "_ghi_chu": [
+    "DANH SACH UNG VIEN SE TAO cho test Masking #73087. Moi ma CV (CV01...CV09) = 1 ho so. Sua file nay, khong sua code.",
+    "Tao ho so se dung: ten, gioi tinh (prefix_name), nam sinh, source, luong. Cac o dropdown khac (main_skill, exp_id, truong, cong ty hien tai) giu nhu app_default.json vi da chay duoc tren STG.",
+    "Phan 'cv' la noi dung CHU trong file CV se sinh. address_key = doan dia chi dung de kiem tra da bi che chua.",
+    "lien_he = THONG TIN LIEN HE se nam trong CV va PHAI bi che (BR1). {n3},{n4} = so ngau nhien, {tag} = 4 ky tu ngau nhien, code thay moi lan chay de khong trung ung vien cu. 'linkedin_an' = link an gan tren chu 'LinkedIn profile', khong hien URL. CV08 la Source VJP nen KHONG duoc che. SDT o o Mobile tren form = 'phone' cua ung vien.",
+    "Noi dung CV khong dung dau gach ngang '-' va dau ngoac don, vi font Windows trich sai cac ky tu nay (xem docs muc 10).",
+    "working_history = chi ghi phan van ban tu do (ly do nghi viec). Cac o dropdown cua Working History (cong ty, quy mo, goi luong...) giu nhu app_default.json vi da chay duoc tren STG."
+  ],
+  "CV01": {
+    "mo_ta": "PDF co chu. Luong chinh day du, di het cong doan 1 den 4",
+    "source_id": "TA",
+    "prefix_name": "Mr.",
+    "last_name": "Trần Minh",
+    "first_name": "Quân",
+    "date_of_birth": "1995",
+    "expect_salary_fix": "18000000",
+    "lien_he": {
+      "phone": "098 {n3} {n4}",
+      "phone_intl": "+84 97 {n3} {n4}",
+      "email": "quan.tran.{tag}@gmail.com",
+      "github": "https://github.com/quantran{tag}",
+      "linkedin_an": "https://www.linkedin.com/in/quantran{tag}"
+    },
+    "cv": {
+      "title": "Kiểm thử phần mềm",
+      "address": "Số 25 Ngõ 120 Hoàng Quốc Việt, Phường Nghĩa Đô, Quận Cầu Giấy, Hà Nội",
+      "address_key": "Ngõ 120 Hoàng Quốc Việt",
+      "portfolio": "https://quantran.dev",
+      "university": "Đại học Bách Khoa Hà Nội",
+      "experience": [
+        "2019 đến nay: Kiểm thử phần mềm, Manual testing Web, Công ty Phần mềm Hà Nội",
+        "• Viết test case, thực hiện kiểm thử chức năng và hồi quy",
+        "• Báo cáo lỗi trên Redmine, phối hợp với đội phát triển"
+      ],
+      "skills": "Manual testing, SQL cơ bản, Postman, Playwright"
+    },
+    "working_history": {
+      "reason_detail": "Muốn làm việc trong môi trường có quy trình kiểm thử rõ ràng hơn"
+    }
+  },
+  "CV02": {
+    "mo_ta": "PDF scan (anh, khong co lop chu), phai che bang OCR",
+    "source_id": "TA",
+    "prefix_name": "Ms.",
+    "last_name": "Lê Thị Thu",
+    "first_name": "Hà",
+    "date_of_birth": "1997",
+    "expect_salary_fix": "16000000",
+    "lien_he": {
+      "phone": "090 {n3} {n4}",
+      "email": "ha.le.{tag}@gmail.com",
+      "facebook": "https://facebook.com/ha.le.{tag}",
+      "zalo": "090 {n3} {n4}",
+      "linkedin_an": "https://www.linkedin.com/in/hale{tag}"
+    },
+    "cv": {
+      "title": "Kiểm thử phần mềm",
+      "address": "Số 8 Đường Nguyễn Văn Linh, Phường Hòa Thuận Tây, Quận Hải Châu, Đà Nẵng",
+      "address_key": "Đường Nguyễn Văn Linh",
+      "portfolio": "https://hale.design",
+      "university": "Đại học Bách Khoa Đà Nẵng",
+      "experience": [
+        "2020 đến nay: Kiểm thử phần mềm, Tester Mobile, Công ty Giải pháp Số Đà Nẵng",
+        "• Kiểm thử ứng dụng Android và iOS, viết kịch bản kiểm thử",
+        "• Theo dõi lỗi và kiểm tra lại sau khi sửa"
+      ],
+      "skills": "Mobile testing, Jira, Postman, SQL cơ bản"
+    },
+    "working_history": {
+      "reason_detail": "Công ty chuyển hướng sản phẩm, không còn dự án mobile"
+    }
+  },
+  "CV03": {
+    "mo_ta": "Anh PNG, phai che bang OCR",
+    "source_id": "TA",
+    "prefix_name": "Mr.",
+    "last_name": "Phạm Đức",
+    "first_name": "Long",
+    "date_of_birth": "1993",
+    "expect_salary_fix": "22000000",
+    "lien_he": {
+      "phone": "091 {n3} {n4}",
+      "phone_intl": "+1 415 {n3} {n4}",
+      "email": "long.pham.{tag}@outlook.com",
+      "gitlab": "https://gitlab.com/longpham{tag}",
+      "skype": "live:long.pham.{tag}"
+    },
+    "cv": {
+      "title": "Lập trình viên Backend",
+      "address": "Số 14 Hẻm 45 Đường Lê Văn Việt, Phường Hiệp Phú, Thành phố Thủ Đức, Hồ Chí Minh",
+      "address_key": "Hẻm 45 Đường Lê Văn Việt",
+      "portfolio": "https://longpham.io",
+      "university": "Đại học Công nghệ Thông tin Hồ Chí Minh",
+      "experience": [
+        "2018 đến nay: Lập trình viên Backend, Python và Django, Công ty Thương mại Điện tử Sài Gòn",
+        "• Xây dựng API và tối ưu truy vấn cơ sở dữ liệu",
+        "• Viết kiểm thử tự động và hỗ trợ triển khai hệ thống"
+      ],
+      "skills": "Python, Django, PostgreSQL, Docker"
+    },
+    "working_history": {
+      "reason_detail": "Muốn tham gia hệ thống lớn hơn và học thêm về kiến trúc"
+    }
+  },
+  "CV04": {
+    "mo_ta": "Anh JPG, phai che bang OCR",
+    "source_id": "TA",
+    "prefix_name": "Ms.",
+    "last_name": "Nguyễn Hoàng",
+    "first_name": "Yến",
+    "date_of_birth": "1999",
+    "expect_salary_fix": "14000000",
+    "lien_he": {
+      "phone": "093 {n3} {n4}",
+      "email": "yen.nguyen.{tag}@gmail.com",
+      "instagram": "https://instagram.com/yen.nguyen.{tag}",
+      "tiktok": "https://www.tiktok.com/@yennguyen{tag}",
+      "telegram": "https://t.me/yennguyen{tag}"
+    },
+    "cv": {
+      "title": "Chuyên viên Nhân sự",
+      "address": "Tổ 6 Khu phố 3 Phường Tân Phong, Thành phố Biên Hòa, Đồng Nai",
+      "address_key": "Khu phố 3 Phường Tân Phong",
+      "portfolio": "https://yennguyen.vn",
+      "university": "Đại học Kinh tế Hồ Chí Minh",
+      "experience": [
+        "2021 đến nay: Chuyên viên Tuyển dụng, Công ty Dịch vụ Nhân lực Đồng Nai",
+        "• Đăng tin tuyển dụng, sàng lọc hồ sơ và hẹn lịch phỏng vấn",
+        "• Làm việc với các phòng ban để chốt nhu cầu nhân sự"
+      ],
+      "skills": "Tuyển dụng, Excel, Giao tiếp, Tiếng Anh cơ bản"
+    },
+    "working_history": {
+      "reason_detail": "Mong muốn làm việc gần nhà và có lộ trình phát triển rõ ràng"
+    }
+  },
+  "CV05": {
+    "mo_ta": "File Word .docx. Chua ro che duoc hay bao E_004, hoi BA (docs muc 6)",
+    "source_id": "TA",
+    "prefix_name": "Mr.",
+    "last_name": "Vũ Anh",
+    "first_name": "Tuấn",
+    "date_of_birth": "1992",
+    "expect_salary_fix": "20000000",
+    "lien_he": {
+      "phone": "+84 912 {n3} {n3}",
+      "email": "tuan.vu.{tag}@gmail.com",
+      "twitter": "https://x.com/tuanvu{tag}",
+      "linkedin_an": "https://www.linkedin.com/in/tuanvu{tag}"
+    },
+    "cv": {
+      "title": "Quản lý dự án",
+      "address": "Số 3 Ngách 12 Ngõ 85 Phố Chùa Láng, Phường Láng Thượng, Quận Đống Đa, Hà Nội",
+      "address_key": "Ngách 12 Ngõ 85",
+      "portfolio": "https://tuanvu.work",
+      "university": "Đại học Ngoại thương",
+      "experience": [
+        "2017 đến nay: Quản lý dự án phần mềm, Công ty Công nghệ Việt",
+        "• Lập kế hoạch, theo dõi tiến độ và làm việc với khách hàng",
+        "• Điều phối nhóm 10 người gồm lập trình và kiểm thử"
+      ],
+      "skills": "Quản lý dự án, Scrum, Jira, Tiếng Anh giao tiếp"
+    },
+    "working_history": {
+      "reason_detail": "Muốn thử sức ở vị trí quản lý với quy mô nhóm lớn hơn"
+    }
+  },
+  "CV06A": {
+    "mo_ta": "File hong: noi dung loi nhung giu dau PDF. Ky vong E_005",
+    "source_id": "TA",
+    "prefix_name": "Mr.",
+    "last_name": "Đặng Quốc",
+    "first_name": "Bảo",
+    "date_of_birth": "1996",
+    "expect_salary_fix": "15000000",
+    "lien_he": {
+      "phone": "096 {n3} {n4}",
+      "email": "bao.dang.{tag}@gmail.com"
+    },
+    "cv": {
+      "title": "Kiểm thử phần mềm",
+      "address": "Số 41 Đường 3 Tháng 2, Phường 11, Quận 10, Hồ Chí Minh",
+      "address_key": "Đường 3 Tháng 2",
+      "portfolio": "https://baodang.me",
+      "university": "Đại học Sư phạm Kỹ thuật Hồ Chí Minh",
+      "experience": [
+        "2020 đến nay: Kiểm thử phần mềm, Công ty Phần mềm Sài Gòn"
+      ],
+      "skills": "Manual testing, SQL cơ bản"
+    },
+    "working_history": {
+      "reason_detail": "Tìm môi trường phát triển nghề nghiệp tốt hơn"
+    }
+  },
+  "CV06B": {
+    "mo_ta": "File chu doi duoi .pdf. Ky vong E_005",
+    "source_id": "TA",
+    "prefix_name": "Ms.",
+    "last_name": "Hoàng Ngọc",
+    "first_name": "Mai",
+    "date_of_birth": "1998",
+    "expect_salary_fix": "15000000",
+    "lien_he": {
+      "phone": "097 {n3} {n4}",
+      "email": "mai.hoang.{tag}@gmail.com"
+    },
+    "cv": {
+      "title": "Kiểm thử phần mềm",
+      "address": "Số 7 Đường Trần Phú, Phường Lộc Thọ, Thành phố Nha Trang, Khánh Hòa",
+      "address_key": "Đường Trần Phú",
+      "portfolio": "https://maihoang.dev",
+      "university": "Đại học Nha Trang",
+      "experience": [
+        "2021 đến nay: Kiểm thử phần mềm, Công ty Công nghệ Nha Trang"
+      ],
+      "skills": "Manual testing, Postman"
+    },
+    "working_history": {
+      "reason_detail": "Chuyển nơi ở nên cần công việc phù hợp hơn"
+    }
+  },
+  "CV07": {
+    "mo_ta": "Nhieu file CV trong 1 ho so (1 PDF + 1 PNG). Moi file 1 ban _masked.pdf",
+    "source_id": "TA",
+    "prefix_name": "Mr.",
+    "last_name": "Bùi Thanh",
+    "first_name": "Sơn",
+    "date_of_birth": "1994",
+    "expect_salary_fix": "21000000",
+    "lien_he": {
+      "phone": "094 {n3} {n4}",
+      "phone_intl": "+81 90 {n4} {n4}",
+      "email": "son.bui.{tag}@gmail.com",
+      "github": "https://github.com/sonbui{tag}"
+    },
+    "cv": {
+      "title": "Kỹ sư Phần mềm",
+      "address": "Số 52 Phố Tô Hiệu, Phường Cốc Lếu, Thành phố Lào Cai, Lào Cai",
+      "address_key": "Phố Tô Hiệu",
+      "portfolio": "https://sonbui.tech",
+      "university": "Đại học Bách Khoa Hà Nội",
+      "experience": [
+        "2018 đến nay: Kỹ sư Phần mềm, Java và Spring, Công ty Giải pháp Tài chính",
+        "• Phát triển dịch vụ thanh toán và tích hợp cổng thanh toán",
+        "• Review mã nguồn và hướng dẫn thành viên mới"
+      ],
+      "skills": "Java, Spring Boot, MySQL, Kafka"
+    },
+    "working_history": {
+      "reason_detail": "Muốn làm việc với công nghệ mới trong lĩnh vực tài chính"
+    }
+  },
+  "CV08": {
+    "mo_ta": "PDF co chu nhung Source VJP: KHONG duoc tao ban che. Source ghi 'VJP' (id 23, ten duy nhat)",
+    "source_id": "VJP",
+    "prefix_name": "Ms.",
+    "last_name": "Trịnh Thùy",
+    "first_name": "Linh",
+    "date_of_birth": "1996",
+    "expect_salary_fix": "19000000",
+    "lien_he": {
+      "phone": "086 {n3} {n4}",
+      "email": "linh.trinh.{tag}@gmail.com",
+      "linkedin_an": "https://www.linkedin.com/in/linhtrinh{tag}"
+    },
+    "cv": {
+      "title": "Biên phiên dịch tiếng Nhật",
+      "address": "Số 19 Ngõ 6 Phố Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội",
+      "address_key": "Ngõ 6 Phố Duy Tân",
+      "portfolio": "https://linhtrinh.jp",
+      "university": "Đại học Hà Nội",
+      "experience": [
+        "2019 đến nay: Biên phiên dịch tiếng Nhật, Công ty Phần mềm Nhật Việt",
+        "• Phiên dịch họp với khách hàng Nhật và dịch tài liệu kỹ thuật",
+        "• Chứng chỉ tiếng Nhật N2"
+      ],
+      "skills": "Tiếng Nhật N2, Tiếng Anh, Dịch tài liệu kỹ thuật"
+    },
+    "working_history": {
+      "reason_detail": "Công ty giảm quy mô dự án tiếng Nhật"
+    }
+  },
+  "CV09": {
+    "mo_ta": "Ho so da co CV, TA upload lai lan 2: ban che phai tao lai theo file moi",
+    "source_id": "TA",
+    "prefix_name": "Mr.",
+    "last_name": "Đỗ Hữu",
+    "first_name": "Nghĩa",
+    "date_of_birth": "1991",
+    "expect_salary_fix": "24000000",
+    "lien_he": {
+      "phone": "088 {n3} {n4}",
+      "email": "nghia.do.{tag}@gmail.com",
+      "github": "https://github.com/nghiado{tag}"
+    },
+    "cv": {
+      "title": "Kỹ sư DevOps",
+      "address": "Số 9 Ngõ 23 Phố Nguyễn Chí Thanh, Phường Láng Hạ, Quận Đống Đa, Hà Nội",
+      "address_key": "Ngõ 23 Phố Nguyễn Chí Thanh",
+      "portfolio": "https://nghiado.cloud",
+      "university": "Học viện Công nghệ Bưu chính Viễn thông",
+      "experience": [
+        "2016 đến nay: Kỹ sư DevOps, Công ty Hạ tầng Đám mây",
+        "• Xây dựng quy trình triển khai tự động với Jenkins và Docker",
+        "• Giám sát hệ thống và xử lý sự cố"
+      ],
+      "skills": "Linux, Docker, Jenkins, Kubernetes"
+    },
+    "working_history": {
+      "reason_detail": "Muốn mở rộng kinh nghiệm sang hạ tầng đám mây"
+    }
+  }
+}

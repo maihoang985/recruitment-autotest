@@ -1,0 +1,58 @@
+import re
+from playwright.sync_api import Playwright, sync_playwright, expect
+
+
+def run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context(storage_state=".auth\\truong.dangvan.json")
+    page = context.new_page()
+    page.goto("https://vms-ta.stg.vti.com.vn/web?#action=756&model=vti.resource.request&view_type=list&menu_id=565")
+    page.get_by_role("button", name="Resource Requests").click()
+    page.get_by_role("menuitem", name="All Requests").click()
+    page.goto("https://vms-ta.stg.vti.com.vn/web?#action=756&model=vti.resource.request&view_type=list&menu_id=565")
+    page.get_by_role("button", name=" Create").click()
+    page.get_by_role("textbox", name="Department Leader").click()
+    page.get_by_role("textbox", name="Department Leader").fill("Đào Thị Thu Hiền (TI.BOD) <hien.daothithu@vti.com.vn>")
+    page.get_by_role("textbox", name="Department Leader").press("ControlOrMeta+a")
+    page.get_by_role("textbox", name="Department Leader").fill("truong.dang")
+    page.locator("#ui-id-36").get_by_text("Đặng Văn Trường (VTI.VMS) <").click()
+    page.get_by_role("textbox", name="Project").click()
+    page.get_by_role("textbox", name="Job Location").click()
+    page.get_by_role("textbox", name="Approver").click()
+    page.get_by_role("textbox", name="Expect Qty").click()
+    page.get_by_role("textbox", name="Deadline Date").click()
+    page.get_by_role("textbox", name="Job Position").click()
+    page.get_by_role("textbox", name="Level").click()
+    page.get_by_text("UpdateCodeNewStatus:The").click()
+    page.get_by_role("textbox", name="Main skill").click()
+    page.get_by_role("textbox", name="Main skill").click()
+    page.get_by_role("textbox", name="Main skill").click()
+    page.locator("#ui-id-71").get_by_text("第二新卒").click()
+    page.get_by_role("textbox", name="Sub skill").click()
+    page.get_by_text("UpdateCodeNewStatus:The").click()
+    page.locator("html").click()
+    page.get_by_role("textbox", name="Salary Upto").click()
+    page.get_by_role("textbox", name="Job Type").click()
+    page.get_by_text("Part timeFull").click()
+    page.get_by_role("textbox", name="Interview type").click()
+    page.get_by_text("Face to faceSkype").click()
+    page.locator("html").click()
+    page.get_by_role("textbox", name="Languages").click()
+    page.get_by_role("textbox", name="Expect Onboard Date").click()
+    page.locator("table:nth-child(2) > tbody > tr:nth-child(19) > td:nth-child(2)").click()
+    page.get_by_role("textbox", name="- Mô tả chi tiết các công việ").click()
+    page.get_by_role("textbox", name="- Mô tả chi tiết các công việ").click()
+    page.get_by_role("textbox", name="- Detailed description of").click()
+    page.get_by_role("textbox", name="- Số năm kinh nghiệm tối thiể").click()
+    page.get_by_role("textbox", name="- Minimum years of relevant").click()
+    page.get_by_role("textbox", name="- Quy mô dự án: - Domain dự á").click()
+    page.get_by_role("textbox", name="C u r r e n c y U n i t").click()
+    page.close()
+
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
