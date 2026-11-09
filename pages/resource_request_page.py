@@ -72,11 +72,16 @@ class ResourceRequestPage:
             menu.first.wait_for(state="hidden", timeout=5000)
 
     def _ensure_tag(self, label: str, user: str):
-        """Many2many tags: chi chon them khi o chua co user do."""
+        """Many2many tags: o phai co dung user trong data. STG tu dien san nguoi theo DL -> bo tag khac roi chon user do."""
         cell = self.page.locator("td", has=self.page.locator(
             "label.o_form_label", has_text=label)).locator("xpath=following-sibling::td[1]")
-        if user.lower() not in cell.inner_text().lower() and not cell.locator(".badge, .o_tag").count():
-            self._pick(label, user)
+        if user.lower() in cell.inner_text().lower():
+            return
+        tags = cell.locator(".badge, .o_tag")
+        while tags.count():
+            tags.first.locator(".o_delete, .fa-times").first.click()
+            self.page.wait_for_timeout(500)
+        self._pick(label, user)
 
     def _fill(self, label: str, value: str):
         self._field(label).fill(value)
@@ -164,7 +169,7 @@ class ResourceRequestPage:
 
     def save(self):
         self.page.get_by_role("button", name=re.compile("Save")).click()
-        expect(self.page.get_by_role("button", name=re.compile("Edit"))).to_be_visible()
+        expect(self.page.get_by_role("button", name=re.compile("Edit"))).to_be_visible(timeout=30000)
 
     def submit(self):
         p = self.page

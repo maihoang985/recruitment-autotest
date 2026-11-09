@@ -37,7 +37,7 @@ Khi TA upload CV gốc, hệ thống **tự tạo bản "CV Masked"** (PDF) đã
 - TA bấm **Submit CV** ở dòng Review CV.
 
 ### Phạm vi  [RM-70538 mục 3.2] [SRS ô B208–B210]
-- Chỉ áp dụng cho ứng viên có **Source thuộc công ty VTI**. VJP và công ty khác giữ nguyên như cũ.
+- **Phạm vi đã đổi** [User 08/11/2026, RM-75015]: áp dụng cho **mọi công ty, chỉ trừ VJP**. Bản SRS đã đọc còn ghi: chỉ Source thuộc công ty VTI, VJP và công ty khác giữ nguyên như cũ.
 - CV upload trước khi bật tính năng thì không tạo bản che. TA upload lại thì áp dụng.
 - "Lịch phỏng vấn" là các màn View CV/phỏng vấn trên **Odoo 12**. Odoo 17 không thuộc phạm vi.
 
@@ -405,3 +405,10 @@ Xong bấm **Accept** (2 hộp thoại: xác nhận → popup Accept CV, xem `du
 - CV sinh theo bố cục hồ sơ thật (dải màu + ảnh đại diện chữ cái đầu, các mục liên hệ, học vấn, kinh nghiệm, kỹ năng). Mã mẫu chỉ còn ở chân trang nhỏ và tên file. Xem trước: `python scripts/make_cv_samples.py` → `data/cv_samples/`.
 - `test_masking_batch.py` giờ lấy ứng viên theo mã CV. **CV09 (upload lại) chưa có test** vì `test_masking_reupload.py` chưa viết; batch hiện tạo 9 hồ sơ.
 - Đã kiểm tra: CV PDF có chữ chứa đủ các mục "phải che" trước khi che (6/6, 4/4, 4/4).
+
+## 14. Bộ data theo task cha #70538  [User chốt 09/11/2026]
+- Data: `data/application/dataset_70538.json`, RR: `data/rr/rr_70538.json`. Tạo: `pytest tests/test_dataset_70538.py` (dòng xong thì bỏ qua). Xem kết quả: `python scripts/report_dataset_70538.py` → `output/dataset_70538.md`.
+- [STG-chạy 09/11]: RR01415 Open 20 slot. 16 dòng tạo xong (id 32937–32952). D17 dùng hồ sơ có sẵn (21550).
+- [STG-chạy 09/11] **D09 (id 32952):** Partner `thanh.hoang1` bấm Save thì STG báo Access Error đọc `vti.recruitment.nda`, nhưng hồ sơ **vẫn được tạo** và đã che xong. [SRS AP-01 ô L176] ghi Partner "Được quyền tạo CV", cột Create ô D176 để trống. Cần hỏi BA/Dev.
+- [STG-API 09/11] **D08 chưa tạo được:** dropdown Source chỉ hiện Source của công ty đang đứng, `chau.phamminh` đang ở VTI Corporation nên không có `GITS_REC`.
+- [STG-chạy 09/11]: RR tự điền Reviewer, Interviewer, SM theo DL; `hieu.bachduy` vẫn còn sau khi thêm tài khoản thuần. Trạng thái RR sau Submit cập nhật chậm hơn thời gian code chờ.

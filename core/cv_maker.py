@@ -36,6 +36,8 @@ KINDS = {
     "multi":       ("CV07", "NHIỀU FILE", "Kỳ vọng: mỗi file có một bản _masked.pdf riêng", (0.80, 0.45, 0.05), ".pdf"),
     "vjp":         ("CV08", "PDF CÓ CHỮ · SOURCE VJP", "Kỳ vọng: KHÔNG tạo bản che vì Source thuộc VJP", (0.35, 0.35, 0.35), ".pdf"),
     "reupload":    ("CV09", "UPLOAD LẠI LẦN 2", "Kỳ vọng: tạo lại bản che theo file mới này", (0.60, 0.20, 0.50), ".pdf"),
+    "pdf_limits":  ("CV10", "PDF GIỚI HẠN BR12", "Kỳ vọng: địa chỉ không nhãn và ảnh chèn có thể sót, chỉ ghi nhận", (0.45, 0.40, 0.10), ".pdf"),
+    "replace_masked": ("CV11", "FILE THAY CV MASKED", "Dùng để REC User thay tay ô CV Masked", (0.30, 0.30, 0.55), ".pdf"),
 }
 
 
@@ -53,7 +55,7 @@ def label_of(kind: str, part: str = "") -> tuple[str, str]:
 CONTACT_LABELS = {
     "phone": "Điện thoại", "phone_intl": "Phone international", "email": "Email", "facebook": "Facebook",
     "zalo": "Zalo", "github": "GitHub", "gitlab": "GitLab", "skype": "Skype", "instagram": "Instagram",
-    "tiktok": "TikTok", "telegram": "Telegram", "twitter": "Twitter",
+    "tiktok": "TikTok", "telegram": "Telegram", "twitter": "Twitter", "linkedin": "LinkedIn",
 }
 HIDDEN_KEY = "linkedin_an"
 HIDDEN_LINK_TEXT = "LinkedIn profile, bấm để xem"
@@ -79,7 +81,11 @@ def _blocks(c: dict) -> list[tuple]:
     """Noi dung CV dang khoi: (loai, ...). Dung chung cho PDF, anh, Word."""
     ct = c["contacts"]
     b = [("name", c["full_name"].upper()), ("title", c["title"]), ("section", "THÔNG TIN LIÊN HỆ"),
-         ("kv", "Năm sinh", str(c["dob"])), ("kv", "Địa chỉ", c["address"])]
+         ("kv", "Năm sinh", str(c["dob"]))]
+    if c.get("address_lines"):  # nhieu dong dia chi (BR2): co label = dong co nhan, khong label = chi co tu khoa
+        b += [("kv", a["label"], a["value"]) if a.get("label") else ("line", a["value"]) for a in c["address_lines"]]
+    else:
+        b.append(("kv", "Địa chỉ", c["address"]))
     b += [("kv", lab, ct[k]) for k, lab in CONTACT_LABELS.items() if k in ct]
     if HIDDEN_KEY in ct:
         b.append(("hidden", HIDDEN_LINK_TEXT, ct[HIDDEN_KEY]))
@@ -89,13 +95,18 @@ def _blocks(c: dict) -> list[tuple]:
           ("section", "KINH NGHIỆM LÀM VIỆC")]
     b += [("bullet" if s.startswith("•") else "job", s) for s in c["experience"]]
     b += [("section", "KỸ NĂNG"), ("line", c["skills"])]
+    if c.get("image_lines"):  # BR12: thong tin lien he nam trong anh chen tren PDF co chu
+        b.append(("image_text", c["image_lines"]))
     return b
 
 
 def _spec(c: dict) -> dict:
     c = _norm_cv(c)
     must_mask = {("linkedin_hidden" if k == HIDDEN_KEY else k): v for k, v in c["contacts"].items()}
-    must_mask["address"] = c["address_key"]
+    if c.get("address_lines"):  # dong khong co 'key' (BR12) khong dua vao danh sach phai che
+        must_mask.update({f"address_{i}": a["key"] for i, a in enumerate(c["address_lines"], 1) if a.get("key")})
+    else:
+        must_mask["address"] = c["address_key"]
     job = c["experience"][0]
     role = (job.split(":", 1)[-1]).split(",")[0].strip()
     return {
@@ -103,6 +114,30 @@ def _spec(c: dict) -> dict:
         "must_keep": {"full_name": c["full_name"].upper(), "dob": str(c["dob"]), "university": c["university"],
                       "portfolio": c["portfolio"], "experience": role},
     }
+
+
+def _portrait_png(color: tuple) -> bytes:
+    """Anh chan dung gia lap (BR3: anh chan dung khong duoc che)."""
+    doc = pymupdf.open()
+    page = doc.new_page(width=160, height=160)
+    page.draw_rect(page.rect, color=None, fill=(0.88, 0.91, 0.95))
+    page.draw_oval(pymupdf.Rect(26, 104, 134, 210), color=None, fill=color)
+    page.draw_circle((80, 62), 32, color=None, fill=(0.93, 0.76, 0.62))
+    png = page.get_pixmap(dpi=144).tobytes("png")
+    doc.close()
+    return png
+
+
+def _text_image_png(lines: list[str]) -> bytes:
+    """Anh chua chu lien he, de chen vao PDF co chu (BR12)."""
+    doc = pymupdf.open()
+    page = doc.new_page(width=320, height=70)
+    page.draw_rect(page.rect, color=(0.6, 0.6, 0.6), fill=(0.96, 0.96, 0.90))
+    for i, s in enumerate(lines):
+        page.insert_text((10, 26 + i * 24), s, fontsize=13, fontname="F0", fontfile=FONT)
+    png = page.get_pixmap(dpi=200).tobytes("png")
+    doc.close()
+    return png
 
 
 def _pdf_doc(c: dict, kind: str, part: str = "") -> tuple[pymupdf.Document, list[str]]:
@@ -128,13 +163,11 @@ def _pdf_doc(c: dict, kind: str, part: str = "") -> tuple[pymupdf.Document, list
             written.append(s)
         return fonts[bold].text_length(s, fontsize=size)
 
-    # Dai dau trang: anh dai dien (chu cai dau), ten, chuc danh
+    # Dai dau trang: anh chan dung, ten, chuc danh
     page.draw_rect(pymupdf.Rect(0, 0, 595, 130), color=None, fill=color)
-    page.draw_circle((78, 65), 40, color=None, fill=(1, 1, 1))
-    words = c["full_name"].split()
-    ini = (words[0][0] + words[-1][0]).upper()
-    text(78 - fonts[True].text_length(ini, fontsize=28) / 2, 76, ini, 28, True, color, record=False)
+    page.insert_image(pymupdf.Rect(38, 25, 118, 105), stream=_portrait_png(color))
     blocks = _blocks(c)
+    step = 19 if len(blocks) <= 26 else 15  # CV nhieu dong (bo A) van nam gon 1 trang
     text(140, 66, blocks[0][1], 22, True, (1, 1, 1), maxw=410)
     text(140, 94, blocks[1][1], 13, False, (1, 1, 1), maxw=410)
 
@@ -150,20 +183,25 @@ def _pdf_doc(c: dict, kind: str, part: str = "") -> tuple[pymupdf.Document, list
             lab = rest[0] + ":"
             lw = text(X, y, lab, 11, True)
             text(X + lw + 6, y, rest[1], 11, False, maxw=W - lw - 6)
-            y += 19
+            y += step
         elif kind_ == "hidden":  # link an: chu hien thi khong chua URL, URL gan vao chu (BR1)
             text(X, y, rest[0])
             page.insert_link({"kind": pymupdf.LINK_URI, "uri": rest[1], "from": pymupdf.Rect(X, y - 12, X + 210, y + 4)})
-            y += 19
+            y += step
         elif kind_ == "job":
             text(X, y, rest[0], 11, True, maxw=W)
-            y += 19
+            y += step
         elif kind_ == "bullet":
             text(X + 8, y, rest[0], 11, maxw=W - 8)
-            y += 19
+            y += step
+        elif kind_ == "image_text":
+            page.insert_image(pymupdf.Rect(X, y, X + 320, y + 70), stream=_text_image_png(rest[0]))
+            y += 76
         else:  # line
             text(X, y, rest[0], 11, maxw=W)
-            y += 19
+            y += step
+    if y > 815:
+        raise AssertionError(f"CV mau tran trang (y={y}): bot noi dung hoac giam gian dong")
 
     # Chan trang: ma mau (nho, de nhan biet khi show)
     text(X, 825, f"Mẫu kiểm thử Masking #73087 · {title}", 8, False, (0.55, 0.55, 0.55))
@@ -309,7 +347,7 @@ def make_cv(kind: str, out_dir: Path, c: dict, stem: str = "CV") -> dict:
     path = out_dir / f"{code}_{stem}{ext}"
     files = [path]
 
-    if kind in ("pdf_text", "vjp", "reupload"):
+    if kind in ("pdf_text", "vjp", "reupload", "pdf_limits", "replace_masked"):
         _make_pdf_text(path, c, kind)
     elif kind == "pdf_scan":
         _make_pdf_scan(path, c, kind)

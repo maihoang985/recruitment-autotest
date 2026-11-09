@@ -34,13 +34,15 @@ def _expand(value: str, tag: str) -> str:
     return re.sub(r"\{n(\d)\}", lambda m: "".join(random.choice("0123456789") for _ in range(int(m.group(1)))), value)
 
 
-def app_data(file: str = "app_default.json", candidate: str | None = None, **override) -> dict:
+def app_data(file: str = "app_default.json", candidate: str | dict | None = None, **override) -> dict:
     """Doc data/application/<file>, sinh SDT/email/link moi (khong trung ung vien cu).
-    candidate="CV01": lay ung vien do trong data/application/candidates.json (ten, lien he, noi dung CV)."""
+    candidate="CV01": lay ung vien do trong data/application/candidates.json (ten, lien he, noi dung CV).
+    candidate={...}: dung truc tiep ung vien cung cau truc (vd tu dataset_70538.json)."""
     d = json.loads((config.DATA_DIR / "application" / file).read_text(encoding="utf-8"))
     d = {k: v for k, v in d.items() if not k.startswith("_")}
     if candidate:
-        cand = json.loads((config.DATA_DIR / "application" / "candidates.json").read_text(encoding="utf-8"))[candidate]
+        cand = candidate if isinstance(candidate, dict) else \
+            json.loads((config.DATA_DIR / "application" / "candidates.json").read_text(encoding="utf-8"))[candidate]
         for k in ("source_id", "prefix_name", "last_name", "first_name", "date_of_birth", "expect_salary_fix"):
             d[k] = cand[k]
         d["cv"] = {**d["cv"], **cand["cv"]}
@@ -179,11 +181,8 @@ class ApplicationPage:
                     raise
 
     def _settle(self):
-        """STG cham: onchange tra ve muon se ghi de len o da dien -> cho mang yen roi moi di tiep."""
-        try:
-            self.page.wait_for_load_state("networkidle", timeout=30000)
-        except Exception:
-            pass
+        """STG cham: onchange tra ve muon se ghi de len o da dien -> cho 2 giay, roi fill_form doc lai gia tri tung o va dien lai o nao bi trong.
+        Khong dung networkidle (Odoo luon co ket noi nen, xem docs/CHECKLIST-auto-test.md muc 3)."""
         self.page.wait_for_timeout(2000)
         self._handle_popup(wait=1500)
 

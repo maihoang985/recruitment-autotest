@@ -1,0 +1,81 @@
+{
+  "_ghi_chu": [
+    "Bang data da chot ngay 09/11/2026 cho task cha #70538 (test #73087). Sua file nay, khong sua code.",
+    "stop: saved = da Save; draft_line = co dong Review CV Draft, chua Submit; submitted = da Submit; accepted_meeting = da Accept + Add a Meeting; submit_now = Submit ngay khi ban che chua xong (BR8).",
+    "account: khoa trong muc accounts. noi_dung: khoa trong muc noi_dung. {slug} thay theo tung dong; {tag}, {n3}, {n4} sinh ngau nhien moi lan chay.",
+    "Noi dung CV khong dung dau gach ngang va dau ngoac don (xem docs muc 10)."
+  ],
+  "accounts": {
+    "TA": "chau.phamminh",
+    "VJP": "trung.phambao",
+    "PARTNER": "thanh.hoang1",
+    "DL_ACCEPT": "dang.nguyenhuu",
+    "INTERVIEWER": "minh.hoangkim"
+  },
+  "lien_he": {
+    "phone": "098 {n3} {n4}",
+    "phone_intl": "+84 97 {n3} {n4}",
+    "email": "{slug}.{tag}@gmail.com",
+    "facebook": "https://facebook.com/{slug}{tag}",
+    "zalo": "https://zalo.me/{slug}{tag}",
+    "github": "https://github.com/{slug}{tag}",
+    "gitlab": "https://gitlab.com/{slug}{tag}",
+    "skype": "https://join.skype.com/invite/{slug}{tag}",
+    "instagram": "https://instagram.com/{slug}{tag}",
+    "tiktok": "https://tiktok.com/@{slug}{tag}",
+    "telegram": "https://t.me/{slug}{tag}",
+    "twitter": "https://x.com/{slug}{tag}",
+    "linkedin": "https://www.linkedin.com/in/{slug}{tag}",
+    "linkedin_an": "https://www.linkedin.com/in/{slug}an{tag}"
+  },
+  "cv_chung": {
+    "title": "Kiểm thử phần mềm",
+    "university": "Đại học Bách Khoa Hà Nội",
+    "experience": [
+      "2019 đến nay: Kiểm thử phần mềm, Manual testing Web, Công ty Phần mềm Hà Nội",
+      "• Viết test case, thực hiện kiểm thử chức năng và hồi quy",
+      "• Báo cáo lỗi trên Redmine, phối hợp với đội phát triển"
+    ],
+    "skills": "Manual testing, SQL cơ bản, Postman, Playwright"
+  },
+  "noi_dung": {
+    "A": {
+      "address_lines": [
+        {"label": "Address", "value": "88 Lang Street, Hanoi", "key": "88 Lang Street"},
+        {"label": "Địa chỉ", "value": "Số 25 đường Hoàng Quốc Việt, Hà Nội", "key": "25 đường Hoàng Quốc Việt"},
+        {"label": "Nơi ở", "value": "Số 7 đường Nguyễn Trãi, Hà Nội", "key": "7 đường Nguyễn Trãi"},
+        {"label": "Thường trú", "value": "Số 19 đường Lê Lợi, Thanh Hóa", "key": "19 đường Lê Lợi"},
+        {"label": "Tạm trú", "value": "Số 42 đường Kim Mã, Hà Nội", "key": "42 đường Kim Mã"},
+        {"value": "Số 3 Ngõ 120, Phường Nghĩa Đô, Quận Cầu Giấy", "key": "Ngõ 120"},
+        {"value": "Số 5 Ngách 14, Hẻm 9, Huyện Thanh Trì", "key": "Ngách 14"},
+        {"value": "Khu phố 2, Thị xã Từ Sơn, Bắc Ninh", "key": "Thị xã Từ Sơn"},
+        {"value": "12 Tran Phu, Ward 5, District 3", "key": "Ward 5"}
+      ]
+    },
+    "gioi_han": {
+      "address_lines": [
+        {"value": "25 Hoàng Hoa Thám, Ba Đình, Hà Nội"}
+      ],
+      "image_lines": ["Liên hệ qua ảnh: 0912 555 010", "Email: lienhe.anhchen@gmail.com"]
+    }
+  },
+  "rows": [
+    {"id": "D01", "mo_ta": "PDF có chữ, bộ A", "kind": "pdf_text", "source_id": "TA", "account": "TA", "stop": "saved", "prefix_name": "Mr.", "last_name": "Trần Minh", "first_name": "Khôi", "slug": "khoitran", "check": "BR1, BR2, BR3, BR5, BR6, tải và in CV Masked"},
+    {"id": "D02", "mo_ta": "PDF scan, bộ A", "kind": "pdf_scan", "source_id": "TA", "account": "TA", "stop": "saved", "prefix_name": "Ms.", "last_name": "Lê Thu", "first_name": "Hằng", "slug": "hangle", "check": "BR4, BR5: tô đen, file ra là PDF"},
+    {"id": "D03", "mo_ta": "PNG, bộ A", "kind": "png", "source_id": "TA", "account": "TA", "stop": "saved", "prefix_name": "Mr.", "last_name": "Phạm Đức", "first_name": "Anh", "slug": "anhpham", "check": "BR4, BR5: tô đen, file ra là PDF"},
+    {"id": "D04", "mo_ta": "JPG, bộ A", "kind": "jpg", "source_id": "TA", "account": "TA", "stop": "saved", "prefix_name": "Ms.", "last_name": "Nguyễn Hoài", "first_name": "An", "slug": "annguyen", "check": "BR4, BR5: tô đen, file ra là PDF"},
+    {"id": "D05", "mo_ta": "Nhiều file: PDF và PNG, bộ A", "kind": "multi", "source_id": "TA", "account": "TA", "stop": "saved", "prefix_name": "Mr.", "last_name": "Bùi Thanh", "first_name": "Tùng", "slug": "tungbui", "check": "BR5: mỗi file một bản che"},
+    {"id": "D06", "mo_ta": "PDF có địa chỉ không nhãn và ảnh chèn", "kind": "pdf_limits", "noi_dung": "gioi_han", "source_id": "TA", "account": "TA", "stop": "saved", "prefix_name": "Ms.", "last_name": "Đỗ Quỳnh", "first_name": "Chi", "slug": "chido", "check": "BR12: có thể sót, chỉ ghi nhận"},
+    {"id": "D07", "mo_ta": "PDF có chữ, Source VJP", "kind": "vjp", "source_id": "VJP", "account": "VJP", "stop": "saved", "prefix_name": "Ms.", "last_name": "Trịnh Mỹ", "first_name": "Linh", "slug": "linhtrinh", "check": "Không có CV Masked, CV gốc như cũ"},
+    {"id": "D08", "mo_ta": "PDF có chữ, Source GITS_REC", "kind": "pdf_text", "source_id": "GITS_REC", "account": "TA", "stop": "saved", "prefix_name": "Mr.", "last_name": "Vũ Gia", "first_name": "Huy", "slug": "huyvu", "check": "Được che (mọi công ty trừ VJP)"},
+    {"id": "D09", "mo_ta": "PDF có chữ, Source HRI, Partner upload", "kind": "pdf_text", "source_id": "HRI", "account": "PARTNER", "stop": "saved", "form": {"business_domain_id": "Giáo dục"}, "prefix_name": "Ms.", "last_name": "Hoàng Bích", "first_name": "Ngọc", "slug": "ngochoang", "check": "BR9: thanh.hoang1 là người upload nên xem được CV gốc"},
+    {"id": "D10", "mo_ta": "PDF có chữ, có file CV mới để đổi", "kind": "pdf_text", "source_id": "TA", "account": "TA", "stop": "saved", "extra": "reupload", "prefix_name": "Mr.", "last_name": "Đinh Công", "first_name": "Minh", "slug": "minhdinh", "check": "Bạn tự đổi CV: bản che phải tạo lại theo file mới"},
+    {"id": "D11", "mo_ta": "PDF có chữ, có file để thay CV Masked", "kind": "pdf_text", "source_id": "TA", "account": "TA", "stop": "saved", "extra": "replace_masked", "prefix_name": "Ms.", "last_name": "Phan Thảo", "first_name": "Vy", "slug": "vyphan", "check": "Bạn tự thay CV Masked và tự bấm Recreate"},
+    {"id": "D12", "mo_ta": "PDF có chữ, dòng Review CV Draft", "kind": "pdf_text", "source_id": "TA", "account": "TA", "stop": "draft_line", "prefix_name": "Mr.", "last_name": "Ngô Quốc", "first_name": "Bảo", "slug": "baongo", "check": "Bạn bấm Submit: BR7, mail, BR8 khi đã có bản che"},
+    {"id": "D13", "mo_ta": "PDF có chữ, đã Submit", "kind": "pdf_text", "source_id": "TA", "account": "TA", "stop": "submitted", "prefix_name": "Ms.", "last_name": "Lý Hải", "first_name": "Yến", "slug": "yenly", "check": "DL, Reviewer: BR7, BR9, E_007"},
+    {"id": "D14", "mo_ta": "PDF có chữ, đã Accept và Add a Meeting", "kind": "pdf_text", "source_id": "TA", "account": "TA", "stop": "accepted_meeting", "prefix_name": "Mr.", "last_name": "Mai Xuân", "first_name": "Trường", "slug": "truongmai", "check": "Interviewer: View CV lúc phỏng vấn"},
+    {"id": "D15", "mo_ta": "File hỏng nội dung lỗi, dòng Review CV Draft", "kind": "broken_cut", "source_id": "TA", "account": "TA", "stop": "draft_line", "prefix_name": "Mr.", "last_name": "Tạ Minh", "first_name": "Đức", "slug": "ducta", "check": "E_005. Bạn bấm Submit: phải bị chặn"},
+    {"id": "D16", "mo_ta": "File hỏng đổi đuôi, dòng Review CV Draft", "kind": "broken_fake", "source_id": "TA", "account": "TA", "stop": "draft_line", "prefix_name": "Ms.", "last_name": "Cao Phương", "first_name": "Thảo", "slug": "thaocao", "check": "E_005. Bạn bấm Submit: phải bị chặn"},
+    {"id": "D18", "mo_ta": "PDF có chữ, Submit ngay khi bản che chưa xong", "kind": "pdf_text", "source_id": "TA", "account": "TA", "stop": "submit_now", "prefix_name": "Mr.", "last_name": "Hà Quang", "first_name": "Vinh", "slug": "vinhha", "check": "BR8: xem file output/submit_now_<id>.txt"}
+  ]
+}

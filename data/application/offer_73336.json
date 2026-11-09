@@ -1,0 +1,42 @@
+{
+  "_ghi_chu": [
+    "Data cho task #73336/#73337: kiem chung lo hong sua luong OL tren STG. Sua file nay, khong sua code.",
+    "rr: RR dang Open tao rieng cho flow nay. Moi ho so dung cho mot trang thai OL, xem docs khi tong ket.",
+    "Lien he, noi dung CV dung chung voi dataset_70538.json."
+  ],
+  "rr": "RR01416",
+  "accounts": {
+    "TA": "chau.phamminh",
+    "DL_ACCEPT": "truong.dangvan",
+    "INTERVIEWER": "truong.dangvan"
+  },
+  "phieu_danh_gia": {
+    "_ghi_chu": "Cau bat buoc (nhan do) theo phieu mau KQ08353. O chon khong ghi value thi lay dong dau danh sach. Ngay: so ngay so voi hom nay.",
+    "interview_type": "Face to Face",
+    "interviewer": "Đặng Văn Trường",
+    "cau": [
+      {"label": "Vị trí phỏng vấn", "value": "Java"},
+      {"label": "Số năm kinh nghiệm", "value": "2 years"},
+      {"label": "Level", "value": "Level 2"},
+      {"label": "Skills", "value": "Manual testing, SQL cơ bản, Postman"},
+      {"label": "Mức độ cần", "value": "Medium/low"},
+      {"label": "Mức offer mong muốn của ứng viên", "value": "20,000,000 VND"},
+      {"label": "Ngày dự kiến đi làm", "days": 30, "as_text": true},
+      {"label": "Nhận xét khác của người phỏng vấn", "value": "Nắm chắc quy trình kiểm thử, giao tiếp tốt, có thể tham gia dự án ngay."},
+      {"label": "Ngày phỏng vấn", "days": -1}
+    ]
+  },
+  "offer": {
+    "_ghi_chu": "Popup Nhap Offer sau Final Result. Theo ket qua mau KQ08353: Range, ty le thu viec 85%.",
+    "object_type": "Member",
+    "offer_options": "Range",
+    "offer_min": 20000000,
+    "offer_max": 22000000,
+    "salary_rate": "85%",
+    "currency": "VND",
+    "note": "Đề xuất offer theo kết quả phỏng vấn."
+  },
+  "rows": [
+    {"id": "A", "mo_ta": "Dung o OL Approved, kiem tra muc 2", "kind": "pdf_text", "source_id": "TA", "account": "TA", "prefix_name": "Mr.", "last_name": "Trần Quốc", "first_name": "Lương A", "slug": "luongtest73336a"}
+  ]
+}
