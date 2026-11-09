@@ -10,6 +10,7 @@
 | `du-lieu-quet-api-form-va-dropdown.md` | Kết quả quét API các form và dropdown; quy tắc popup (mục 0b); tài khoản theo role (mục 4); Accept CV, Add a Meeting, Interview Result | Làm với Application, Review CV, popup, chọn tài khoản |
 | `task-73087-masking-test-tom-tat.md` | Task #73087 che contact trong CV: phạm vi, BR, kịch bản, câu hỏi BA; quy ước nhãn nguồn (mục 0) | Làm task Masking, hoặc cần quy ước nhãn nguồn |
 | `masking.md` | Tổng kết Masking 09/11/2026: bộ data RR01415, chỗ cần check theo tài khoản, View CV, mail, lỗi CV ảnh, câu hỏi BA | Check tay hoặc làm tiếp task Masking |
+| `task-73336-ol-reject-tom-tat.md` | Task #73336/#73337 kiểm chứng lỗ hổng sửa lương OL: đang dừng ở đâu, bảng 6 lỗ hổng, kế hoạch test phá, flow từ RR đến offer | Làm OL, Offer, sửa lương |
 
 ## Thông tin riêng của project
 
